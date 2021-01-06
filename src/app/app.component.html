@@ -13,8 +13,8 @@ Example of right click on dynamically generated component.
 
 <!-- an hidden div is created to set the position of appearance of the menu-->
 <div style="visibility: hidden; position: fixed;"
-[style.left]="menuTopLeftPosition.x"
-[style.top]="menuTopLeftPosition.y"
+[style.left.px]="menuTopLeftPosition.x"
+[style.top.px]="menuTopLeftPosition.y"
 [matMenuTriggerFor]="rightMenu"></div>
 
 <!-- standar material menu -->
