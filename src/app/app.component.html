@@ -1,27 +1,29 @@
 Example of right click on dynamically generated component.
 
 <div class="container">
+  <!-- we generate a number of items dynamically-->
+  @for(menuItem of getExamples(10); track menuItem) {
+    <div>
+      <!-- when the user clicks on the div the onRightClick event is called, we pass a simple object-->
+      <div (contextmenu)="onRightClick($event, {content: 'Item generated #' + menuItem})"
+           style="padding-bottom: 20px;">
+        Item {{menuItem}}
+      </div>
+    </div>
+  }
 
-<!-- we generate a number of items dinamically-->
-<div *ngFor="let i of getExamples(15)">
-  <!-- when the user clicks on the div the onRightClick event is called, we pass a simple object-->
-  <div (contextmenu)="onRightClick($event, {content: 'Item generated #' + i})"
-  style="padding-bottom: 20px;">
-    Item {{i}}
-  </div>
-</div>
+  <!-- an hidden div is created to set the position of appearance of the menu-->
+  <div
+    style="visibility: hidden; position: fixed;"
+       [style.left.px]="menuTopLeftPosition.x"
+       [style.top.px]="menuTopLeftPosition.y"
+       [matMenuTriggerFor]="rightMenu"></div>
 
-<!-- an hidden div is created to set the position of appearance of the menu-->
-<div style="visibility: hidden; position: fixed;"
-[style.left.px]="menuTopLeftPosition.x"
-[style.top.px]="menuTopLeftPosition.y"
-[matMenuTriggerFor]="rightMenu"></div>
-
-<!-- standar material menu -->
-<mat-menu #rightMenu="matMenu">
-  <ng-template matMenuContent let-item="item">
-    <button mat-menu-item>Clicked {{item.content}}</button>
-    <button mat-menu-item>Fixed menu</button>
-  </ng-template>
-</mat-menu>
+  <!-- standard material menu -->
+  <mat-menu #rightMenu="matMenu">
+    <ng-template matMenuContent let-item="item">
+      <button mat-menu-item>Clicked {{item.content}}</button>
+      <button mat-menu-item>Fixed menu</button>
+    </ng-template>
+  </mat-menu>
 </div>
