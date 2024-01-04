@@ -10,7 +10,7 @@ import {MatMenuModule, MatMenuTrigger} from "@angular/material/menu";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'demo-menu';
+  title = 'angular-right-click-menu';
 
   // we create an object that contains coordinates
   menuTopLeftPosition =  {x: 0, y: 0}
